@@ -18,12 +18,12 @@ Alarmmaster is a reliability-focused, Android-first alarm app designed to work e
 ## 📱 Screenshots
 
 <p align="center">
-	<img src="docs/evidence/screenshots/alarm_create_24h.jpg" alt="Alarm creation 24-hour" width="250" />
-	<img src="docs/evidence/screenshots/alarm_create_12h_date.jpg" alt="Alarm creation 12-hour with date" width="250" />
-	<img src="docs/evidence/screenshots/alarm_details_full.jpg" alt="Alarm details full options" width="250" />
-	<img src="docs/evidence/screenshots/alarm_ringing.jpg" alt="Alarm ringing screen" width="250" />
-	<img src="docs/evidence/screenshots/my_alarms_list.jpg" alt="My Alarms list" width="250" />
-	<img src="docs/evidence/screenshots/daily_streaks.jpg" alt="Daily Streaks stats" width="250" />
+  <img src="docs/evidence/screenshots/photo_1_2026-03-12_19-09-30.jpg" alt="Alarm creation 24-hour" width="250" />
+  <img src="docs/evidence/screenshots/photo_5_2026-03-12_19-09-30.jpg" alt="Alarm creation 12-hour with date" width="250" />
+  <img src="docs/evidence/screenshots/photo_2_2026-03-12_19-09-30.jpg" alt="Alarm details full options" width="250" />
+  <img src="docs/evidence/screenshots/photo_8_2026-03-12_19-09-30.jpg" alt="Alarm ringing screen" width="250" />
+  <img src="docs/evidence/screenshots/photo_6_2026-03-12_19-09-30.jpg" alt="My Alarms list" width="250" />
+  <img src="docs/evidence/screenshots/photo_3_2026-03-12_19-09-30.jpg" alt="Daily Streaks stats" width="250" />
 </p>
 
 ---
