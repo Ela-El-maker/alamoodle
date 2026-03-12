@@ -1,32 +1,53 @@
 # Alarmmaster
 
-Android-first alarm app focused on reliability under process death, reboot, and OEM background constraints.
+Alarmmaster is a reliability-focused, Android-first alarm app designed to work even under process death, device reboot, and strict OEM background limits. Built with Flutter for cross-platform support.
 
-## Core Runtime Path
+---
 
-Primary alarm execution path:
+## 🚀 Features
 
-`AlarmManager -> AlarmTriggerReceiver -> AlarmRingingService -> AlarmActivity`
+- Reliable alarm scheduling and ringing
+- 12-hour & 24-hour time formats
+- One-time and recurring alarms
+- Custom labels, sounds, snooze, and nag mode
+- Daily streak tracking and stats
+- Modern, dark-themed UI
 
-Native (`shadow_native`) remains the source of truth for planning, scheduling, ringing, and recovery.
+---
 
-## Project Structure
+## 📱 Screenshots
 
-- `lib/` Flutter UI, controllers, and bridge models.
-- `android/app/src/main/kotlin/.../alarm/` native alarm domain, scheduler, service, recovery.
-- `android/app/src/androidTest/` physical-device reliability instrumentation.
-- `scripts/qa/` QA harnesses (including future-event certification).
-- `scripts/release/` release packaging automation.
-- `docs/` roadmap, QA matrices, release gates, and runbooks.
+<p align="center">
+	<img src="docs/evidence/screenshots/alarm_create_24h.jpg" alt="Alarm creation 24-hour" width="250" />
+	<img src="docs/evidence/screenshots/alarm_create_12h_date.jpg" alt="Alarm creation 12-hour with date" width="250" />
+	<img src="docs/evidence/screenshots/alarm_details_full.jpg" alt="Alarm details full options" width="250" />
+	<img src="docs/evidence/screenshots/alarm_ringing.jpg" alt="Alarm ringing screen" width="250" />
+	<img src="docs/evidence/screenshots/my_alarms_list.jpg" alt="My Alarms list" width="250" />
+	<img src="docs/evidence/screenshots/daily_streaks.jpg" alt="Daily Streaks stats" width="250" />
+</p>
 
-## Local Setup
+---
+
+## 🗂 Project Structure
+
+- `lib/` — Flutter UI, controllers, bridge models
+- `android/` — Native alarm domain, scheduler, service, recovery
+- `scripts/qa/` — QA harnesses (future-event certification)
+- `scripts/release/` — Release packaging automation
+- `docs/` — Roadmap, QA matrices, release gates, runbooks
+
+---
+
+## 🛠 Local Setup
 
 ```bash
 flutter pub get
 flutter run
 ```
 
-## Quality Gates (Required Before Release)
+---
+
+## ✅ Quality Gates
 
 ```bash
 flutter analyze
@@ -34,33 +55,34 @@ flutter test
 ./android/gradlew -p android app:compileDebugKotlin app:testDebugUnitTest
 ```
 
-Optional physical future-event certification harness:
+---
+
+## 🚀 Release Preparation
+
+See `docs/DEPLOYMENT_RUNBOOK.md` and use:
 
 ```bash
-./scripts/qa/future_event_cert_phone.sh
+./scripts/release/prepare_android_deploy.sh
 ```
 
-## Release Preparation
+---
 
-Use the deployment runbook and release script:
+## ⚠️ Support Limitations & Platform Constraints
 
-- `docs/DEPLOYMENT_RUNBOOK.md`
-- `./scripts/release/prepare_android_deploy.sh`
+### Hard Platform Limits
 
-The script packages an Android App Bundle (`.aab`) and writes release evidence metadata.
-For local RC builds, release minification can be toggled via Gradle property:
+- Force-stopped apps may not receive alarm execution events until reopened.
+- Powered-off devices cannot execute alarms until the OS is running again.
+- OEM battery/background policies can delay alarms despite correct app settings.
 
-```bash
-./android/gradlew -p android bundleRelease -PreleaseMinify=false
-```
+### User Guidance
 
-## Signing and Secrets
+- Keep exact alarm and notification permissions enabled.
+- Disable battery optimization for the app if reliability is degraded.
+- Run a test alarm after changing device power settings.
 
-- Copy `android/key.properties.example` to `android/key.properties` and fill real signing values.
-- `android/key.properties`, keystores, credential files, and generated evidence are ignored by `.gitignore`.
+### Support Playbook
 
-## Platform Limits
-
-Known Android/OEM limits (force-stop behavior, powered-off behavior, OEM restrictions) are documented in:
-
-- `docs/SUPPORT_LIMITATIONS.md`
+- Request diagnostics export JSON from Reliability screen.
+- Confirm device manufacturer/model and Android version.
+- Check whether issue reproduces after app/device restart and settings validation.
