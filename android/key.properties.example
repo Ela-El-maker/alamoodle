@@ -1,0 +1,6 @@
+# Copy to android/key.properties and fill with your release keystore values.
+# This file is intentionally ignored by git.
+storeFile=../keystore/upload-keystore.jks
+storePassword=REPLACE_ME
+keyAlias=upload
+keyPassword=REPLACE_ME
